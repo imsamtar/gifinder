@@ -68,7 +68,7 @@ img {
 }
 </style>
 <form on:submit={getGifs}>
-	<input id="search" type="text" style="index: 0" placeholder="Search your favourite gif images" bind:value={keyword} autofocus disabled={loading}>
+	<input id="search" type="text" style="index: 0" placeholder="Search your favourite gif images" bind:value={keyword} disabled={loading}>
 	<input type="submit" value="Search" disabled={loading}/>
 </form>
 <div class="images">
