@@ -8,6 +8,7 @@
 	let loading = false;
 	function getGifs(event){
 		loading = true;
+		gifs = [];
 		event.preventDefault();
 		fetch(`https://api.giphy.com/v1/gifs/search?api_key=O0PIjSQKNXlhQl4ro8ngi3paQujecP6C&q=${keyword}&limit=25&offset=0&rating=G&lang=en`)
 		.then(res => res.json())
@@ -68,7 +69,7 @@ img {
 }
 </style>
 <form on:submit={getGifs}>
-	<input id="search" type="text" style="index: 0" placeholder="Search your favourite gif images" bind:value={keyword} autofocus disabled={loading}>
+	<input id="search" type="text" style="index: 0" placeholder="Search your favourite gif images" bind:value={keyword} disabled={loading}>
 	<input type="submit" value="Search" disabled={loading}/>
 </form>
 <div class="images">
