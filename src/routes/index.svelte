@@ -10,10 +10,10 @@
 	function getGifs(event){
 		loading = true;
 		gifs = [];
-		event.preventDefault();
+		if(event) event.preventDefault();
 		fetch(`https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=25&offset=0&rating=G&lang=en`)
 		.then(res => res.json())
-		.then(json => gifs = json.data);
+		.then(json => gifs = json.data).catch(err => getGifs());
 		loading = false;
 	}
 
