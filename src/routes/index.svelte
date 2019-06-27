@@ -44,6 +44,9 @@ input[type="submit"]{
 img {
 	width: 100%;
 	height: auto;
+	background: #c9c9c9;
+	min-width: 200px;
+	min-height: 200px;
 }
 @media screen and (max-width: 1024px){
 	.images {
@@ -76,7 +79,7 @@ img {
 {#if gifs.length>0}
 <div class="images">
 	{#each gifs as gif}
-		<img autoplay src={gif.images.fixed_height.url} alt="tag" width="200px">
+		<img src={gif.images.fixed_height.url} alt="tag" width="200px" loading="lazy">
 	{/each}
 </div>
 {:else}
