@@ -82,10 +82,8 @@ img {
 		<img src={gif.images.fixed_height.url} alt="tag" width="200px" loading="lazy">
 	{/each}
 </div>
-{:else}
+{:else if loading}
 	<div style="width: 100%;text-align: center;">
-		{#if loading}
-			Loading
-		{/if}
+		Loading
 	</div>
 {/if}
