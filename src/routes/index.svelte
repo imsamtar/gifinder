@@ -6,11 +6,12 @@
 	let gifs = [];
 	let keyword='';
 	let loading = false;
+	$: API_KEY = 'O0PIjSQKNXlhQl4ro8ngi3paQujecP6C';
 	function getGifs(event){
 		loading = true;
 		gifs = [];
 		event.preventDefault();
-		fetch(`https://api.giphy.com/v1/gifs/search?api_key=O0PIjSQKNXlhQl4ro8ngi3paQujecP6C&q=${keyword}&limit=25&offset=0&rating=G&lang=en`)
+		fetch(`https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=25&offset=0&rating=G&lang=en`)
 		.then(res => res.json())
 		.then(json => gifs = json.data);
 		loading = false;
@@ -72,8 +73,16 @@ img {
 	<input id="search" type="text" style="index: 0" placeholder="Search your favourite gif images" bind:value={keyword} disabled={loading}>
 	<input type="submit" value="Search" disabled={loading}/>
 </form>
+{#if gifs.length>0}
 <div class="images">
 	{#each gifs as gif}
 		<img autoplay src={gif.images.fixed_height.url} alt="tag" width="200px">
 	{/each}
 </div>
+{:else}
+	<div style="width: 100%;text-align: center;">
+		{#if loading}
+			Loading
+		{/if}
+	</div>
+{/if}
