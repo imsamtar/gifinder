@@ -8,6 +8,7 @@
 	let loading = false;
 	function getGifs(event){
 		loading = true;
+		gifs = [];
 		event.preventDefault();
 		fetch(`https://api.giphy.com/v1/gifs/search?api_key=O0PIjSQKNXlhQl4ro8ngi3paQujecP6C&q=${keyword}&limit=25&offset=0&rating=G&lang=en`)
 		.then(res => res.json())
